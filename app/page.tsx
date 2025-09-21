@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Leaf, Users, ShoppingCart, Award, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -15,24 +16,28 @@ export default function HomePage() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#marketplace" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/products" className="text-muted-foreground hover:text-foreground transition-colors">
               Marketplace
-            </a>
-            <a href="#farmers" className="text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link href="/products/manage" className="text-muted-foreground hover:text-foreground transition-colors">
               For Farmers
-            </a>
-            <a href="#buyers" className="text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link href="/products" className="text-muted-foreground hover:text-foreground transition-colors">
               For Buyers
-            </a>
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </a>
+            </Link>
+            <Link href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
+              Dashboard
+            </Link>
           </nav>
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm">
-              Login
-            </Button>
-            <Button size="sm">Register</Button>
+            <Link href="/auth/login">
+              <Button variant="ghost" size="sm">
+                Login
+              </Button>
+            </Link>
+            <Link href="/auth/signup">
+              <Button size="sm">Register</Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -42,7 +47,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/10"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Removed the "Connecting Farm to Table" badge */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 font-[family-name:var(--font-playfair)] text-balance">
               Fresh from Farm to Your Table
             </h1>
@@ -51,13 +55,17 @@ export default function HomePage() {
               freshest produce while building sustainable food relationships.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6">
-                Explore Marketplace
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
-                Join as Farmer
-              </Button>
+              <Link href="/products">
+                <Button size="lg" className="text-lg px-8 py-6">
+                  Explore Marketplace
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/auth/signup">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
+                  Join as Farmer
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -138,14 +146,18 @@ export default function HomePage() {
               Join thousands of farmers and conscious consumers building a sustainable food future
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6">
-                Join as Farmer
-                <Leaf className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
-                Join as Buyer
-                <ShoppingCart className="ml-2 h-5 w-5" />
-              </Button>
+              <Link href="/auth/signup">
+                <Button size="lg" className="text-lg px-8 py-6">
+                  Join as Farmer
+                  <Leaf className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/auth/signup">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
+                  Join as Buyer
+                  <ShoppingCart className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -170,19 +182,19 @@ export default function HomePage() {
               <h4 className="font-semibold text-foreground mb-4">Marketplace</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link href="/products" className="hover:text-foreground transition-colors">
                     Browse Produce
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link href="/products" className="hover:text-foreground transition-colors">
                     Seasonal Items
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Bulk Orders
-                  </a>
+                  <Link href="/orders" className="hover:text-foreground transition-colors">
+                    My Orders
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -190,19 +202,19 @@ export default function HomePage() {
               <h4 className="font-semibold text-foreground mb-4">For Farmers</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link href="/products/manage" className="hover:text-foreground transition-colors">
                     Sell Your Produce
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Farmer Resources
-                  </a>
+                  <Link href="/dashboard" className="hover:text-foreground transition-colors">
+                    Farmer Dashboard
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Success Stories
-                  </a>
+                  <Link href="/orders" className="hover:text-foreground transition-colors">
+                    Manage Orders
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -210,14 +222,14 @@ export default function HomePage() {
               <h4 className="font-semibold text-foreground mb-4">Support</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Help Center
-                  </a>
+                  <Link href="/messages" className="hover:text-foreground transition-colors">
+                    Messages
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Contact Us
-                  </a>
+                  <Link href="/dashboard" className="hover:text-foreground transition-colors">
+                    Help Center
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground transition-colors">
